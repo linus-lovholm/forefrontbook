@@ -4,7 +4,9 @@ import { Box } from "@chakra-ui/layout";
 import { AddPostMutation, useAddPostMutation } from "../lib/post.graphql";
 
 const CreatePost = () => {
-  const [addPostMutation, { data, loading, error }] = useAddPostMutation();
+  const [addPostMutation, { data, loading, error }] = useAddPostMutation({
+    refetchQueries: ["Post"],
+  });
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -22,7 +24,9 @@ const CreatePost = () => {
     <Box display={"flex"}>
       <form onSubmit={handleSubmit}>
         <Input maxW="800" type="text" name="content" />
-        <Button marginTop={4} type="submit">Add Post</Button>
+        <Button marginTop={4} type="submit">
+          Add Post
+        </Button>
       </form>
     </Box>
   );

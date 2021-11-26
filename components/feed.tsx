@@ -2,7 +2,7 @@ import { usePostQuery } from "../lib/post.graphql";
 import Post from "./post";
 
 const Feed = () => {
-  const { data, loading, error } = usePostQuery();
+  const { data, loading, error } = usePostQuery({});
   const post = data?.post;
   if (error) {
     return <p></p>;
