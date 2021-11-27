@@ -3,4 +3,5 @@ type User {
   name: String!
   status: String!
   image: String
+  email: String
 }

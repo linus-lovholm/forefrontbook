@@ -1,7 +1,19 @@
-query Post {
-  post {
+query Post($sortOrder: String, $id: ID, $skip: Int, $take: Int) {
+  post(sortOrder: $sortOrder, id: $id, skip: $skip, take: $take) {
     id
     content
+    createdAt
+    likes {
+      author {
+        email
+      }
+    }
+    comments {
+      content
+      author {
+        name
+      }
+    }
     author {
       id
       name
@@ -12,6 +24,18 @@ query Post {
 
 mutation AddPost($content: String!) {
   addPost(content: $content) {
+    content
+  }
+}
+mutation AddLike($postId: ID!, $doUnlike: Boolean) {
+  addLike(postId: $postId, doUnlike: $doUnlike) {
+    postId
+    doUnlike
+  }
+}
+mutation AddComment($postId: ID!, $content: String!) {
+  addComment(postId: $postId, content: $content) {
+    postId
     content
   }
 }

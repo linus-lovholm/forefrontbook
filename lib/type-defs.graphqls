@@ -2,9 +2,17 @@ type Query {
   user(id: ID!): User!
   users: [User]!
   viewer: User
-  post: [Post]
+  post(sortOrder: String, id: ID, skip: Int, take: Int): [Post]
 }
 
 type Mutation {
   addPost(content: String): Post
+}
+
+type Mutation {
+  addLike(postId: ID, doUnlike: Boolean): Like
+}
+
+type Mutation {
+  addComment(postId: ID, content: String): Comment
 }

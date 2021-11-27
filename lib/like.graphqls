@@ -1,0 +1,8 @@
+type Like {
+  id: ID!
+  post: Post!
+  postId: ID!
+  author: User!
+  authorId: ID!
+  doUnlike: Boolean
+}
